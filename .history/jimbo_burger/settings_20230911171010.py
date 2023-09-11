@@ -19,7 +19,6 @@ if os.path.isfile('env.py'):
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 
 # Quick-start development settings - unsuitable for production
@@ -31,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-jaysanders9-jimbosburge-du31494bf5b.ws-eu104.gitpod.io', 'jimbos-burgers.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['8000-jaysanders9-jimbosburge-du31494bf5b.ws-eu104.gitpod.io']
 
 
 # Application definition
@@ -63,7 +62,7 @@ ROOT_URLCONF = 'jimbo_burger.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

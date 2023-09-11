@@ -1,0 +1,1 @@
+web: gunicorn jimbo_burger.wsgi
