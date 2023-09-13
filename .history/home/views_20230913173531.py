@@ -6,4 +6,4 @@ def base(request):
     return render(request, "home/base.html")
 
 def menu(request):
-    return render(request, "home/menu.html")
+    return render(request, "home/index.html")

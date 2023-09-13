@@ -19,6 +19,6 @@ from home.views import base, menu
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', base, name="homepage"),
-    path('menu/', menu, name="menu")
+    path('', index, name="index"),
+    path('/menu/', menu, name="menu")
 ]

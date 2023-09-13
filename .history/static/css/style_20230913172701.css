@@ -24,7 +24,17 @@ body {
     position: relative;
 }
 
+.hero-image {
+    width: 100%;
+    ;
+    
+}
+#hero {
+    width: 100%;
+    background-size: contain;
+    background-attachment: scroll;
 
+}
 #book-button-hero {
     position: fixed;
     z-index: 1;
@@ -131,23 +141,3 @@ body {
     border: none;
 }
 
-
-/* My CSS */
-
-
-.hero-image {
-    width: 100%;
-    ;
-    
-}
-
-#hero {
-    width: 100%;
-    background-size: contain;
-    background-attachment: scroll;
-
-}
-
-th {
-    text-align: right;
-}

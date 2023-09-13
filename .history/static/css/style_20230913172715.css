@@ -132,7 +132,7 @@ body {
 }
 
 
-/* My CSS */
+
 
 
 .hero-image {
@@ -146,8 +146,4 @@ body {
     background-size: contain;
     background-attachment: scroll;
 
-}
-
-th {
-    text-align: right;
 }

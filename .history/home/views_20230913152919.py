@@ -2,8 +2,7 @@ from django.shortcuts import render
 # Create your views here.
 
 
-def base(request):
+def index(request):
     return render(request, "home/base.html")
 
-def menu(request):
-    return render(request, "home/menu.html")
+def

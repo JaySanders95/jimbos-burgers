@@ -132,22 +132,7 @@ body {
 }
 
 
-/* My CSS */
 
 
-.hero-image {
-    width: 100%;
-    ;
-    
-}
 
-#hero {
-    width: 100%;
-    background-size: contain;
-    background-attachment: scroll;
 
-}
-
-th {
-    text-align: right;
-}

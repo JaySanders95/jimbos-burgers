@@ -5,5 +5,4 @@ from django.shortcuts import render
 def base(request):
     return render(request, "home/base.html")
 
-def menu(request):
-    return render(request, "home/menu.html")
+def menu
