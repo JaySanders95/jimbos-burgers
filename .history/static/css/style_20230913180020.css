@@ -1,5 +1,5 @@
 body {
-    background-color: #ffffff;
+    background-color: #F9FAFC;
 }
 
 
@@ -137,19 +137,21 @@ body {
 
 .hero-image {
     width: 100%;
-    margin-top: 97px;
-    margin-bottom: 50px;
+    ;
     
 }
 
 #hero {
     width: 100%;
-    background-size: fixed;
+    background-size: contain;
     background-attachment: scroll;
-
 
 }
 
 th {
     text-align: right;
+}
+
+#welcome {
+    margin-top: ;
 }
