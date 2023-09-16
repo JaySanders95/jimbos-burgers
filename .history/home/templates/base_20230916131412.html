@@ -45,15 +45,15 @@
                         <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink">
                           <li><a class="dropdown-item" href="#">Action</a></li>
                           <li><a class="dropdown-item" href="#">Another action</a></li>
-                          <li><a class="dropdown-item" href="{% url 'account_logout' %}">log out</a></li>
+                          <li><a class="dropdown-item" href="{% url 'accounts_logout' %}">log out</a></li>
                         </ul>
                       </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                        <a class="nav-link" href="{% url 'accounts_signup' %}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_signup'}">Register</a>
+                        <a class="nav-link" href="{% url 'accounts_register' %}">Register</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="">Menu</a>
