@@ -34,16 +34,16 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="">Home</a>
+                        <a class="nav-link active" aria-current="page" href="">Home |</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'menu' %}">Menu</a>
+                        <a class="nav-link" href="{% url 'menu' %}">Menu |</a>
                     </li>
                     
                     {% if user.is_authenticated %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            My account
+                            My account |
                         </a>
                         <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink">
                           <li><a class="dropdown-item" href="#">My bookings</a></li>
@@ -53,10 +53,10 @@
                       </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                        <a class="nav-link" href="{% url 'account_login' %}">Login |</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_sign_up'}">Register</a>
+                        <a class="nav-link" href="{% url 'account_sign_up'}">Register |</a>
                     </li>
 
 

@@ -159,3 +159,7 @@ th {
 }
 
 
+.dropdown-menu {
+    max-height: 80vh; /* Adjust the maximum height as needed */
+    overflow-y: auto;
+}

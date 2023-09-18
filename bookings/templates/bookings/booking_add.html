@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<h2>Create a New Booking</h2>
+
+<form action="{% url 'create_booking' %}" method="post">
+    {% csrf_token %}
+
+    <label for="customer_name">Customer Name:</label><br>
+    <input type="text" id="customer_name" name="customer_name"><br><br>
+
+    <label for="booking_date">Booking Date:</label><br>
+    <input type="date" id="booking_date" name="booking_date"><br><br>
+
+    <label for="booking_time">Booking Time:</label><br>
+    <select id="booking_time" name="booking_time">
+        <option value="1">11:00 - 12:00</option>
+        <option value="2">12:00 - 13:00</option>
+        <!-- Add other time options when finishing code -->
+    </select><br><br>
+
+    <label for="booking_notes">Booking Notes:</label><br>
+    <textarea id="booking_notes" name="booking_notes"></textarea><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
+
+

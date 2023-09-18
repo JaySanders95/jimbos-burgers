@@ -1,40 +1,69 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.views import View
+from django import forms
+from django.shortcuts import render
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.db.models.query import QuerySet
-from .models import Table, Booking
+from bookings.models import Booking, Table
 
-class TableListView(LoginRequiredMixin, ListView):
-    model = Table
-    template_name = 'booking/booking_edit.html'
-    context_object_name = "my_bookings"
+# Form for updating a booking
+class BookingForm(forms.ModelForm):
+    class Meta:
+        model = Booking
+        fields = ['customer_name', 'booking_date', 'booking_time', 'booking_table', 'booking_notes']
 
+# View for updating a booking
+class BookingUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Booking
+    template_name = 'bookings/booking_edit.html'
+    form_class = BookingForm
 
-class TableCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
-    model = Table
-    fields = ['table_number', 'party_size', 'availability']
-    template_name = 'booking/booking_add.html'
-    success_url = reverse_lazy('my_bookings')
+    def form_valid(self, form):
+        # Custom logic for updating a booking
+        return super().form_valid(form)
 
-    def test_func(self):
-        return self.request.user.is_staff  # Check if the user is staff
-
-class TableUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    model = Table
-    fields = ['table_number', 'party_size', 'availability']
-    template_name = 'booking_add.html'
-    success_url = reverse_lazy('my_bookings')
+    def get_success_url(self):
+        return reverse_lazy('my_bookings')
 
     def test_func(self):
-        return self.request.user.is_staff  # Check if the user is staff
+        return self.request.user.is_authenticated
 
-class TableDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    model = Table
-    template_name = 'booking_defensive.html'
+# View for listing bookings
+class BookingListView(LoginRequiredMixin, ListView):
+    model = Booking
+    template_name = 'bookings/my_bookings.html'
+    context_object_name = 'bookings'
+    ordering = ['booking_date', 'booking_time']
+
+    def get_context_data(self, **kwargs):
+        # Adding 'tables' to the context
+        context = super().get_context_data(**kwargs)
+        context['tables'] = Table.objects.all()
+        return context
+
+    def get_queryset(self):
+        return Booking.objects.order_by('booking_date', 'booking_time')
+
+# View for creating a new booking
+class BookingCreateView(LoginRequiredMixin, CreateView):
+    model = Booking
+    template_name = 'bookings/booking_add.html'
+    form_class = BookingForm
     success_url = reverse_lazy('my_bookings')
 
-    def test_func(self):
-        return self.request.user.is_staff  # Check if the user is staff
+    def form_valid(self, form):
+        # Custom logic for creating a booking
+        return super().form_valid(form)
 
+# View for deleting a booking
+class BookingDeleteView(LoginRequiredMixin, DeleteView):
+    model = Booking
+    template_name = 'bookings/booking_defensive.html'
+    success_url = reverse_lazy('my_bookings')
+
+    def form_valid(self, form):
+        # Custom logic for deleting a booking
+        return super().form_valid(form)
+
+    def test_func(self):
+        return self.request.user.is_authenticated
