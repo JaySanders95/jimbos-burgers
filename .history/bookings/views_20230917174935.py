@@ -11,12 +11,15 @@ class TableListView(LoginRequiredMixin, ListView):
     template_name = 'booking/booking_edit.html'
     context_object_name = "my_bookings"
 
+    def get_queryset(self):
+
+        query = self.request.GET.get("ref")
 
 class TableCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Table
     fields = ['table_number', 'party_size', 'availability']
     template_name = 'booking/booking_add.html'
-    success_url = reverse_lazy('my_bookings')
+    success_url = reverse_lazy('booking_edit')
 
     def test_func(self):
         return self.request.user.is_staff  # Check if the user is staff

@@ -5,18 +5,22 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models.query import QuerySet
 from .models import Table, Booking
+from .forms import BookingForm
 
 class TableListView(LoginRequiredMixin, ListView):
     model = Table
     template_name = 'booking/booking_edit.html'
     context_object_name = "my_bookings"
 
+    def get_queryset(self):
+
+        query = self.request
 
 class TableCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Table
     fields = ['table_number', 'party_size', 'availability']
     template_name = 'booking/booking_add.html'
-    success_url = reverse_lazy('my_bookings')
+    success_url = reverse_lazy('booking_edit')
 
     def test_func(self):
         return self.request.user.is_staff  # Check if the user is staff

@@ -16,7 +16,7 @@ class TableCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Table
     fields = ['table_number', 'party_size', 'availability']
     template_name = 'booking/booking_add.html'
-    success_url = reverse_lazy('my_bookings')
+    success_url = reverse_lazy('my_bo')
 
     def test_func(self):
         return self.request.user.is_staff  # Check if the user is staff
