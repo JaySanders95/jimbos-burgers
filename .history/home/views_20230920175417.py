@@ -91,6 +91,7 @@ def add_booking(request):
         # Create a new booking object but don't save it yet
         new_booking = form.save(commit=False)
 
+
         # Save the booking to the database
         new_booking.save()
         # Redirect to the booking list page after successful submission

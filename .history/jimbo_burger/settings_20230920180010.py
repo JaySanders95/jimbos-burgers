@@ -62,9 +62,9 @@ LOGOUT_REDIRECT_URL = '/'
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
     messages.INFO: 'alert-info',
-    messages.SUCCESS: 'alert-success',
-    messages.WARNING: 'alert-warning',
-    messages.ERROR: 'alert-danger',
+    messages.SUCCESS: 'alert-successo',
+    messages.WARNING: 'alert-info',
+    messages.ERROR: 'alert-info',
 }
 
 MIDDLEWARE = [
