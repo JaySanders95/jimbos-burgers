@@ -14,7 +14,7 @@ class BookingForm(forms.ModelForm):
             'booking_notes': 'Booking Notes'
         }
 
-        # Add a datepicker widget for booking_date
+        # Datepicker widget for booking_date
         widgets = {
             'booking_date': forms.DateInput(attrs={'type': 'date'})
         }
