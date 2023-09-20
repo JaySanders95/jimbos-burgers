@@ -1,0 +1,36 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block content %}
+
+<div class="container pb-3">
+    <h1 class="text-center my-4">Menu</h1>
+    <h5 class="text-center">(All burgers are served with your choice of fries or salad.)</h5>
+    
+    <div class="row border">
+        {% for burger in burgers %}
+            <div class="col-lg-6">
+                <div class="burger-list">
+                    <h3>{{ burger.burger_name }}</h3>
+                    <p>{{ burger.description }}</p>
+                    <p>{{ burger.price }}</p>
+                </div>
+            </div>
+        {% endfor %}
+        <h5 class="text-center">(Upgrade your fries to dirty fries for an extra £2!)</h5>
+    </div>
+</div>
+<div class="container pb-3">
+    <div class="row border">
+        <div class="col-md-6 text-center">
+            <h5>Sides</h5>
+            <table class="table">
+                {% % }
+            </table>
+        </div>
+        <div class="col-md-6 text-center"></div>
+    </div>
+</div>
+
+
+{% endblock content %}
