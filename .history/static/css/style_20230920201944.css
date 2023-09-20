@@ -1,0 +1,39 @@
+body {
+    background-color: #ffffff;
+}
+
+.link {
+    color: #23BBBB;
+    text-decoration: none;
+}
+
+.link:hover,
+.link:active {
+    color: #445261;
+    text-decoration: underline;
+}
+
+
+
+/* My CSS */
+
+
+.hero-image {
+    width: 100%;
+    margin-top: 97px;
+    margin-bottom: 50px;
+    
+}
+
+#hero {
+    width: 100%;
+    background-size: fixed;
+    background-attachment: scroll;
+
+}
+
+h1,h2 {
+    color: red;
+}
+
+

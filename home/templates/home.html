@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="hero-image">
-    <img id="hero" src="{% static 'logo_image/burger-hero.jpg' %}" class="img-fluid" alt="tasty looking burger">
-    <div id="book-button-hero">
-        <button>Button</button>
-    </div>
-</div>
+
 
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
+            <div id="hero-container" class="hero-image">
+                <img id="hero" src="{% static 'logo_image/burger-hero1.jpg' %}" class="img-fluid " alt="tasty looking burger">
+            </div>
+        </div>
+        <div class="col-md-8 pt-4">
             <div id="welcome">
                 <h2>Welcome to Jimbo's Burgers</h2>
             </div>
@@ -22,7 +22,7 @@
             </p>
             <p>We source the freshest ingredients from farm to table and ensure all of our meat is free range.</p>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 pt-4">
             <table>
                 <tr>
                     <th>Sunday | </th>
