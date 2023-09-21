@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+        <h2>Create a New Booking</h2>
+            <form action="{% url 'booking_add' %}" method="post">
+                {% csrf_token %}
+
+                <label for="customer_name">Customer Name:</label><br>
+                <input type="text" id="customer_name" name="customer_name"><br><br>
+
+                <label for="booking_date">Booking Date:</label><br>
+                <input type="date" id="booking_date" name="booking_date"><br><br>
+
+                <label for="party_size_for_booking">Party Size:</label><br>
+                <select id="party_size_for_booking" name="party_size">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select><br><br>
+
+                <label for="booking_time">Booking Time:</label><br>
+                <select id="booking_time" name="booking_time">
+                    <option value="1">09:00 - 10:00</option>
+                    <option value="2">10:00 - 11:00</option>
+                    <option value="3">11:00 - 12:00</option>
+                    <option value="4">12:00 - 13:00</option>
+                    <option value="5">13:00 - 14:00</option>
+                    <option value="6">14:00 - 15:00</option>
+                    <option value="7">15:00 - 16:00</option>
+                    <option value="8">16:00 - 17:00</option>
+                    <option value="9">17:00 - 18:00</option>
+                </select><br><br>
+
+                <label for="booking_notes">Booking Notes:</label><br>
+                <textarea id="booking_notes" name="booking_notes"></textarea><br><br>
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>    
+    </div>
+</div>
+{% endblock content%}
+</body>
+</html>
+
+

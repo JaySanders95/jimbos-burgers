@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+
+<label for="booking_table">Booking Table:</label><br>
+<select id="booking_table" name="booking_table">
+    {% for table in tables %}
+        <option value="{{ table.id }}">{{ table.table_number }}</option>
+    {% endfor %}
+</select><br><br>
+
+{%%}
