@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<form action="" method="post">
+    {% crsf_token %}
+
+    <label for="{{ form.table.id_for_label }}">Table:</label>
+    <select name="" id=""></select>
+</form>
+
+
+{% endblock%}
+</body>
+</html>
+
+
