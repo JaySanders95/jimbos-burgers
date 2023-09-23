@@ -6,11 +6,8 @@ from crispy_forms.layout import Submit
 
 class BookingForm(forms.ModelForm):
     
-    #Max table size is 12
-    NUM_GUESTS_CHOICES = [(i, str(i)) for i in range(1,13)]
-    num_guests = forms.ChoiceField(choices=NUM_GUESTS_CHOICES, label= 'Number of guests')
+    NUM_GUESTS_CHOICES = 
 
-    #Date-selector for 'date'
     date=forms.DateField(widget=forms.widgets.DateInput(attrs={'type' : 'date'}))
 
     class Meta:
