@@ -10,7 +10,7 @@ class BookingForm(forms.ModelForm):
 
     class Meta:
         model = Booking
-        fields = ['date', 'time', 'num_guests','notes']
+        fields = ['table', 'date', 'time', 'num_guests','notes']
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

@@ -58,9 +58,7 @@ class BookingListView(LoginRequiredMixin, ListView):
     context_object_name = 'bookings'
 
     def get_queryset(self):
-        
-        #Queryset function for managing booking search
-
+        Queryset function for managing booking search
         query = self.request.GET.get("ref")
         dates = self.request.GET.get("date")
         names = self.request.GET.get("name")
@@ -81,3 +79,4 @@ class BookingListView(LoginRequiredMixin, ListView):
 
 # Apply login_required decorator to restrict access to logged-in users
 ListBookingView = login_required(BookingListView.as_view())
+"""

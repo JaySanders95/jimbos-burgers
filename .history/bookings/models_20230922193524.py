@@ -31,4 +31,4 @@ class Booking(models.Model):
         return dict(self.TIME_CHOICES).get(self.time, 'Unknown')
 
     def __str__(self):
-        return f" Covers: {self.num_guests} Date: {self.date}"
+        return f" Covers: {self.num_guests} At:{self.date}/{self.time[0][0]}"

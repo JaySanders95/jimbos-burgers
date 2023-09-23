@@ -81,3 +81,4 @@ class BookingListView(LoginRequiredMixin, ListView):
 
 # Apply login_required decorator to restrict access to logged-in users
 ListBookingView = login_required(BookingListView.as_view())
+"""

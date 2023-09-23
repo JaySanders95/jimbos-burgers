@@ -23,12 +23,12 @@ class Booking(models.Model):
     date = models.DateField()
     time = models.IntegerField(choices=TIME_CHOICES, default=1)
     num_guests = models.PositiveIntegerField()
-    notes = models.TextField(max_length=40, blank=True, null=True)
+    notes = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def get_time_display(self):
         """Get the display value of the selected time."""
         return dict(self.TIME_CHOICES).get(self.time, 'Unknown')
 
-    def __str__(self):
-        return f" Covers: {self.num_guests} Date: {self.date}"
+    def __self__(self):
+        return f

@@ -10,7 +10,7 @@ class BookingForm(forms.ModelForm):
 
     class Meta:
         model = Booking
-        fields = ['date', 'time', 'num_guests','notes']
+        fields = ['table', 'date', 'time', 'num_guests','notes']
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -28,7 +28,4 @@ class BookingForm(forms.ModelForm):
         #Retrieves available tables
         available_tables = Table.objects.filter(capacity__gte=requested_capacity, is_available=True)
 
-        #Find best table for booking
-        best_table = available_tables.annotate(capacity_diff=Min(requested_capacity - F('capacity'))).order_by('capacity_diff').first()
-
-        return best_table if best_table else None
+        #Find best table
