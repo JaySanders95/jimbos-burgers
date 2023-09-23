@@ -21,15 +21,7 @@ class BookingForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    def save(self, commit=True):
-        booking = super().save(commit=False)
-        #Auto assigns best table based on requirements and availability
-        booking.table = self.find_best_table(booking.num_guests, booking.date, booking.time)
 
-        if commit:
-            booking.save()
-        return booking
-    
     def find_best_table(self, requested_capacity, requested_date, requested_time):
         
         extra_capacity = 1 if requested_capacity % 2 == 1 else 0
@@ -51,4 +43,11 @@ class BookingForm(forms.ModelForm):
                 min_capacity_diff = capacity_diff
             
         return best_table
-        
+    def save(self, commit=True):
+        booking = super().save(commit=False)
+        #Auto assigns best table based on requirements and availability
+        booking.table = self.find_best_table(booking.num_guests, booking.date, booking.time)
+
+        if commit:
+            booking.save()
+        return booking

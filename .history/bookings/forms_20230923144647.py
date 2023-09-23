@@ -32,12 +32,17 @@ class BookingForm(forms.ModelForm):
     
     def find_best_table(self, requested_capacity, requested_date, requested_time):
         
-        extra_capacity = 1 if requested_capacity % 2 == 1 else 0
+        # extra_capacity = 1 if requested_capacity % 2 == 1 else 0
+        if (requested_capacity % 2 == 1) {
+            cap
+        }
+
+        capacity = extra_capacity + requested_capacity
         
         #Retrieves available tables
         available_tables = Table.objects.filter(
-        Q(capacity__gte=requested_capacity) |
-        Q(capacity__gte=requested_capacity + extra_capacity, capacity__in=[2,3,4,5,6,10,12]) 
+        Q(capacity__gte=capacity) |
+        Q(capacity__gte=capacity, capacity__in=[2,3,4,5,6,10,12]) 
         ).filter(is_available=True)
 
         #Find best table for booking
@@ -45,7 +50,7 @@ class BookingForm(forms.ModelForm):
         min_capacity_diff = float('inf')
 
         for table in available_tables:
-            capacity_diff = table.capacity - requested_capacity
+            capacity_diff = table.capacity - capcity
             if 0 <= capacity_diff <= 2 and capacity_diff < min_capacity_diff:
                 best_table = table
                 min_capacity_diff = capacity_diff

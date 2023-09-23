@@ -33,6 +33,7 @@ class BookingForm(forms.ModelForm):
     def find_best_table(self, requested_capacity, requested_date, requested_time):
         
         extra_capacity = 1 if requested_capacity % 2 == 1 else 0
+        print(extra_capacity)
         
         #Retrieves available tables
         available_tables = Table.objects.filter(

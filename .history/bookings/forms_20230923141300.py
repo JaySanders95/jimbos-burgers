@@ -51,4 +51,3 @@ class BookingForm(forms.ModelForm):
                 min_capacity_diff = capacity_diff
             
         return best_table
-        

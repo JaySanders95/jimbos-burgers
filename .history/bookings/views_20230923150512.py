@@ -38,11 +38,11 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
             return render(self.request, self.template_name, {'form' : form})
 
     def find_free_table(self, capacity, date, time):
-        booking_num = int(capacity)
+        let booking_num = int(capacity)
         if booking_num % 2 == 1:
             booking_num += 1
         
-        capacity = str(booking_num)
+        
         # Retreive all available tables
         available_tables = Table.objects.filter(capacity=capacity, is_available=True)
 

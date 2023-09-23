@@ -39,6 +39,7 @@ class BookingForm(forms.ModelForm):
         Q(capacity__gte=requested_capacity) |
         Q(capacity__gte=requested_capacity + extra_capacity, capacity__in=[2,3,4,5,6,10,12]) 
         ).filter(is_available=True)
+        print(available_tables)
 
         #Find best table for booking
         best_table = None

@@ -45,7 +45,7 @@ class BookingForm(forms.ModelForm):
         min_capacity_diff = float('inf')
 
         for table in available_tables:
-            capacity_diff = table.capacity - requested_capacity
+            capacity_diff = table.capacity - (requested_capacity
             if 0 <= capacity_diff <= 2 and capacity_diff < min_capacity_diff:
                 best_table = table
                 min_capacity_diff = capacity_diff

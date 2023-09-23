@@ -10,7 +10,6 @@ class BookingForm(forms.ModelForm):
     NUM_GUESTS_CHOICES = [(i, str(i)) for i in range(1,13)]
     num_guests = forms.ChoiceField(choices=NUM_GUESTS_CHOICES, label= 'Number of guests')
 
-
     #Date-selector for 'date'
     date=forms.DateField(widget=forms.widgets.DateInput(attrs={'type' : 'date'}))
 
@@ -32,7 +31,7 @@ class BookingForm(forms.ModelForm):
     
     def find_best_table(self, requested_capacity, requested_date, requested_time):
         
-        extra_capacity = 1 if requested_capacity % 2 == 1 else 0
+        extra_capacity = 1 if requested_capacity 
         
         #Retrieves available tables
         available_tables = Table.objects.filter(
@@ -50,5 +49,5 @@ class BookingForm(forms.ModelForm):
                 best_table = table
                 min_capacity_diff = capacity_diff
             
+
         return best_table
-        
