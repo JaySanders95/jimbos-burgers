@@ -14,7 +14,6 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
     model = Booking
 
     def form_valid(self, form):
-        #Customer who is logged in is owner of booking request
         form.instance.customer = self.request.user
 
         capacity = form.cleaned_data ['num_guests']
@@ -23,7 +22,7 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
 
         table = self.find_free_table(capacity, date, time)
         
-        #Creates booking
+
         if table:
             booking = Booking.objects.create(
                 table=table,
@@ -83,10 +82,10 @@ class BookingUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'bookings/booking_edit.html'
     success_url = reverse_lazy('my_bookings')
 
+    #Gets 
     def get_object(self, queryset=None):
         obj = super().get_object(queryset)
         return obj
-    
     
     def form_valid(self, form):
         booking = form.save(commit=False)

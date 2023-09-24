@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from home.views import home, menu
-from bookings.views import BookingCreateView, BookingListView, BookingUpdateView, BookingDeleteView
+from bookings.views import BookingCreateView, BookingListView, BookingUpdateView, 
 from allauth.account.views import SignupView
 
 urlpatterns = [

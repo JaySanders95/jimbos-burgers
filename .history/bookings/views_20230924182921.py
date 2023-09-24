@@ -14,7 +14,6 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
     model = Booking
 
     def form_valid(self, form):
-        #Customer who is logged in is owner of booking request
         form.instance.customer = self.request.user
 
         capacity = form.cleaned_data ['num_guests']
@@ -23,7 +22,7 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
 
         table = self.find_free_table(capacity, date, time)
         
-        #Creates booking
+
         if table:
             booking = Booking.objects.create(
                 table=table,
@@ -87,7 +86,6 @@ class BookingUpdateView(LoginRequiredMixin, UpdateView):
         obj = super().get_object(queryset)
         return obj
     
-    
     def form_valid(self, form):
         booking = form.save(commit=False)
         #Finds free table based on the parameters (num_guests, date, time)
@@ -123,6 +121,4 @@ class BookingDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'bookings/booking_defensive.html'
     success_url = reverse_lazy('my_bookings')
 
-    def delete(self, request, *args, **kwargs):
-        messages.success(self.request, "Booking deleted.")
-        return super().delete(request, *args, **kwargs)
+    def delete

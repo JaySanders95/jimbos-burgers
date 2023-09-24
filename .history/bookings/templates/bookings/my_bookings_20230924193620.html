@@ -3,7 +3,7 @@
 
 {% block content%}
 <div class="container">
-    <h1 class="mt-4 md-4 text-center">My Bookings</h1>
+    <h1 class="mt-4 md-4">My Bookings</h1>
     {% if bookings %}
         <div class="row">
             {% for booking in bookings %}
@@ -29,8 +29,7 @@
             {% endfor %}
         </div>
     {% else %}
-        <p class="text-center">You have no current bookings. <a href="{% url 'booking_add' %}"> Add a booking</a></p>
-    {% endif %}
+        <p>You have no current bookings. <a href="{% url 'booking_add'%}"></a></p>
 </div>
 
 {% endblock %}

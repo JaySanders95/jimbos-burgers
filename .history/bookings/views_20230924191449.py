@@ -14,7 +14,6 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
     model = Booking
 
     def form_valid(self, form):
-        #Customer who is logged in is owner of booking request
         form.instance.customer = self.request.user
 
         capacity = form.cleaned_data ['num_guests']
@@ -23,7 +22,7 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
 
         table = self.find_free_table(capacity, date, time)
         
-        #Creates booking
+
         if table:
             booking = Booking.objects.create(
                 table=table,

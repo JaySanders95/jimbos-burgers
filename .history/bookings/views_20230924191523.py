@@ -23,7 +23,7 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
 
         table = self.find_free_table(capacity, date, time)
         
-        #Creates booking
+
         if table:
             booking = Booking.objects.create(
                 table=table,
