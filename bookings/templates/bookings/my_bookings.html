@@ -16,6 +16,7 @@
                             <strong>People:      </strong>{{ booking.num_guests }}<br>
                             <strong>Date:        </strong>{{ booking.date }}<br>
                             <strong>Time:        </strong>{{ booking.get_time_display }}<br>
+                            
 
                         </p>
                         <a href="{% url 'booking_edit' booking.id %}" class="btn btn-primary">Edit</a>
