@@ -4,6 +4,8 @@ from home.views import home, menu, CustomSignupView
 from bookings.views import BookingCreateView, BookingListView, BookingUpdateView, BookingDeleteView
 from allauth.account.views import SignupView
 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name="home"),
@@ -14,4 +16,5 @@ urlpatterns = [
     path('bookings/add/', BookingCreateView.as_view(), name='booking_add'),
     path('bookings/<int:pk>/update/', BookingUpdateView.as_view(), name='booking_edit'),
     path('bookings/<int:pk>/delete/', BookingDeleteView.as_view(), name='booking_defensive'),
+
 ]

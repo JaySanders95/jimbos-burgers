@@ -2,7 +2,6 @@ from django.shortcuts import render
 from home.forms import CustomSignupForm
 from allauth.account.views import SignupView
 
-
 class CustomSignupView(SignupView):
     form_class = CustomSignupForm
 

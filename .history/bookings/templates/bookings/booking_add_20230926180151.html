@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post" class="mt-5">
+                {% csrf_token %}
+                {{ form | crispy }}
+                {% extends 'base.html' %}
+                {% load crispy_forms_tags %}
+                
+                {% block content %}
+                
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <form method="post" class="mt-5">
+                                {% csrf_token %}
+                                {{ form | crispy }}
+                
+                                <div class="form-group">
+                                    <label for="{{ form.date.id_for_label }}">Date:</label>
+                                    {{ form.date }}
+                                </div>
+                
+                                <div class="form-group">
+                                    <label for="{{ form.time.id_for_label }}">Time:</label>
+                                    {{ form.time }}
+                                </div>
+                
+                                <input type="submit" value="Submit">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    // JavaScript to prevent selecting a past date
+    const dateInput = document.getElementById("{{ form.date.auto_id }}");
+    dateInput.addEventListener('change', function() {
+        const today = new Date().toISOString().split('T')[0];
+        if (dateInput.value < today) {
+            dateInput.value = today;
+        }
+    });
+
+    // JavaScript to prevent selecting a past time
+    const timeInput = document.getElementById("{{ form.time.auto_id }}");
+    timeInput.addEventListener('change', function() {
+        const now = new Date();
+        const selectedTime = new Date(`2000-01-01T${timeInput.value}`);
+        if (selectedTime < now) {
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            timeInput.value = `${hours}:${minutes}`;
+        }
+    });
+</script>
+
+
+{% endblock%}
+
+
+
