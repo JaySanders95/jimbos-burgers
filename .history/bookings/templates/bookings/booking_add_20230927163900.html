@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{%}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center bg-light border border-lg">
+            <h2 class="mt5 mb-4"> Create a booking</h2>
+            <form method="post" class="mt-5">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="{{ form.date.id_for_label }}">Date:</label>
+                    {{ form.date }}
+                </div><br>
+
+                <div class="form-group">
+                    <label for="{{ form.time.id_for_label }}">Time:</label>
+                    {{ form.time }}
+                </div><br>
+
+                <div class="form-group">
+                    <label for="{{ form.num.guests.id_for_label }}">Number of Guests:</label>
+                    {{ form.num_guests }}
+                </div><br>
+
+                <div class="form-group">
+                    <label for="{{ form.notes.id_for_label }}">Notes:</label>
+                    {{ form.notes }}
+                </div><br>
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    const dateInput = document.getElementById("{{ form.date.auto_id }}");
+    const timeInput = document.getElementById("{{ form.time.auto_id }}");
+
+    function isDateTimeInPast(dateTime) {
+        const now = new Date();
+        const selectedDateTime = new Date(dateTime);
+        return selectedDateTime < now;
+    }
+
+    function updateDateTime() {
+        const selectedDateTime = `${dateInput.value}T${timeInput.value}`;
+        if (isDateTimeInPast(selectedDateTime)) {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            timeInput.value = `${hours}:${minutes}`;
+        }
+    }
+
+    dateInput.addEventListener('change', function() {
+        const today = new Date().toISOString().split('T')[0];
+        if (dateInput.value < today) {
+            dateInput.value = today;
+        }
+        updateDateTime();
+    });
+
+    timeInput.addEventListener('change', function() {
+        updateDateTime();
+    });
+</script>
+
+
+{% endblock%}
+
+
+
