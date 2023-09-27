@@ -16,7 +16,7 @@ class TableTests(TestCase):
         #TEst table fields
         self.assertEqual(self.table.table_number, 1)
         self.assertEqual(self.table.capacity, 4)
-        self.assertEqual(self.table.is_available, True)
+        self.assertEqual(self.table.is_available)
 
     def test_table_unique_constraint(self):
         #Test unique constraint on table_number

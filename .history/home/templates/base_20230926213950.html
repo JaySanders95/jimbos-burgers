@@ -107,13 +107,7 @@
     {% block extra_js %}
         <script src="{% static 'scripts/script.js' %}"></script>
     {% endblock %}
-    <script>
-        setTimeout (function() {
-        let messages = document.getElementById("msg");
-        let alert = new bootstrap.Alert(messages);
-        alert.close();
-    }, 3000);
-    </script>
+
 </body>
 
 </html>

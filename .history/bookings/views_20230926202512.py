@@ -26,7 +26,9 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
             capacity = form.cleaned_data['num_guests']
             date = form.cleaned_data['date']
             time = form.cleaned_data['time']
+            notes = form.cleaned_data
 
+            time_choice = dict(TIME_CHOICES)
 
             if date < timezone.now().date():
                 raise ValueError("You can't book tables in the past.")

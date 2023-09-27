@@ -47,11 +47,11 @@
     // JavaScript to prevent selecting a past date
     const dateInput = document.getElementById("{{ form.date.auto_id }}");
         dateInput.addEventListener('change', function() {
-            const today = new Date().toISOString().split('T')[0];
-            if (dateInput.value < today) {
-                dateInput.value = today;
-            }
-        });
+        const today = new Date().toISOString().split('T')[0];
+        if (dateInput.value < today) {
+            dateInput.value = today;
+        }
+    });
 
     // JavaScript to prevent selecting a past time
     const timeInput = document.getElementById("{{ form.time.auto_id }}");

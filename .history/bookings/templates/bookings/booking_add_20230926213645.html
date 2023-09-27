@@ -36,38 +36,9 @@
     </div>
 </div>
 
-<script>
-    const dateInput = document.getElementById("{{ form.date.auto_id }}");
-    const timeInput = document.getElementById("{{ form.time.auto_id }}");
-
-    function isDateTimeInPast(dateTime) {
-        const now = new Date();
-        const selectedDateTime = new Date(dateTime);
-        return selectedDateTime < now;
-    }
-
-    function updateDateTime() {
-        const selectedDateTime = `${dateInput.value}T${timeInput.value}`;
-        if (isDateTimeInPast(selectedDateTime)) {
-            const now = new Date();
-            const hours = now.getHours().toString().padStart(2, '0');
-            const minutes = now.getMinutes().toString().padStart(2, '0');
-            timeInput.value = `${hours}:${minutes}`;
-        }
-    }
-
-    dateInput.addEventListener('change', function() {
-        const today = new Date().toISOString().split('T')[0];
-        if (dateInput.value < today) {
-            dateInput.value = today;
-        }
-        updateDateTime();
-    });
-
-    timeInput.addEventListener('change', function() {
-        updateDateTime();
-    });
-</script>
+{% block extra_js %}
+  <script src="{% static 'scripts/script.js' %}"></script>
+{% endblock %}
 
 
 {% endblock%}

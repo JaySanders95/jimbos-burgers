@@ -28,12 +28,6 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
             time = form.cleaned_data['time']
 
 
-            if date < timezone.now().date():
-                raise ValueError("You can't book tables in the past.")
-
-            # Checks date if booking date is not today or in the future
-
-
             table = self.find_free_table(capacity, date, time)
 
             # Creates booking
