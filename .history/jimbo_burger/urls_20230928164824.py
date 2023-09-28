@@ -18,6 +18,8 @@ urlpatterns = [
     path('bookings/add/', BookingCreateView.as_view(), name='booking_add'),
     path('bookings/<int:pk>/update/', BookingUpdateView.as_view(), name='booking_edit'),
     path('bookings/<int:pk>/delete/', BookingDeleteView.as_view(), name='booking_defensive'),
+    path()
+
 ]
 
 if settings.DEBUG:
