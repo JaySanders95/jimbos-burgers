@@ -43,8 +43,8 @@
     document.getElementById('id_table').placeholder = '{{ form.instance.table}}';
     document.getElementById('id_notes').placeholder = '{{ form.instance.notes}}';
 
-
-    function checkDate() {
+    <script>
+        function checkDate() {
         var selectedDate = new Date(document.getElementById('id_time').value);
         var now = new Date();
 
@@ -52,8 +52,8 @@
         alert("Date must be in the future");
         window.location.reload();
         }
-    }
-</script>
+}
+     </script>
 
 
 {% endblock%}
