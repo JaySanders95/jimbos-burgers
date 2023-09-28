@@ -1,0 +1,17 @@
+ 
+
+    <script>
+        function checkDate() {
+        var selectedDate = new Date(document.getElementById('id_time').value);
+        var now = new Date();
+
+        if (selectedDate < now) {
+        alert("Date must be in the future");
+        }
+}
+     </script>
+
+{% endblock%}
+
+
+

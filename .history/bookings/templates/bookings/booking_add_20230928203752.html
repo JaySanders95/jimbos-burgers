@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center bg-light border border-lg">
+                <h2 class="mt5 mb-4"> Create a booking</h2>
+                <form method="post" class="mt-5">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="{{ form.date.id_for_label }}">Date:</label>
+                        {{ form.date }}
+                    </div><br>
+
+                    <div class="form-group">
+                        <label for="{{ form.time.id_for_label }}">Time:</label>
+                        {{ form.time }}
+                    </div><br>
+
+                    <div class="form-group">
+                        <label for="{{ form.num.guests.id_for_label }}">Number of Guests:</label>
+                        {{ form.num_guests }}
+                    </div><br>
+
+                    <div class="form-group">
+                        <label for="{{ form.notes.id_for_label }}">Notes:</label>
+                        {{ form.notes }}
+                    </div><br>
+
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function checkDate() {
+            var selectedDate = document.getElementById('datepicker').value;
+            var now = new Date();
+            var dt1 = Date.parse(now),
+            dt2 = Date.parse(selectedDate);
+            if (dt2 < dt1) {
+                 alert("Date must be in the future");
+            }
+      }
+     </script>
+
+{% endblock%}
+
+
+
