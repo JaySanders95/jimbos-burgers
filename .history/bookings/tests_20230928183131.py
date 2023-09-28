@@ -6,65 +6,51 @@ from datetime import date
 from django.urls import reverse
 from bookings.forms import BookingForm
 
-# Models.py
-
-
+#Models.py
 class TableTests(TestCase):
-
+    
     def setUp(self):
-        # Creates a table for testing
-        self.table = Table.objects.create(
-            table_number=1, capacity=4, is_available=True
-            )
+        #Creates a table for testing
+        self.table = Table.objects.create(table_number=1, capacity=4, is_available=True)
 
     def test_table_str_representation(self):
-        # Test string representation
+        #Test string representation
         self.assertEqual(str(self.table), "Table1")
-
+    
     def test_table_fields(self):
-        # Test table fields
+        #TEst table fields
         self.assertEqual(self.table.table_number, 1)
         self.assertEqual(self.table.capacity, 4)
         self.assertEqual(self.table.is_available, True)
 
     def test_table_unique_constraint(self):
-        # Test unique constraint on table_number
+        #Test unique constraint on table_number
         with self.assertRaises(Exception):
             Table.objects.create(table_number=1, capacity=2, is_available=True)
-
-
+        
 class BookingTest(TestCase):
-
+    
     def setUp(self):
-        # Creates a user, table and booking for table
-        self.user = User.objects.create(
-            username="testuser",
-            password="testpassword"
-            )
-
-        self.table = Table.objects.create(
-            table_number=1,
-            capacity=4,
-            is_available=True
-            )
-
+        #Creates a user, table and booking for table
+        self.user = User.objects.create(username="testuser", password="testpassword")
+        self.table = Table.objects.create(table_number=1, capacity=4, is_available=True)
         self.booking = Booking.objects.create(
             customer=self.user,
             table=self.table,
             date=date(2023, 11, 12),
-            time=3,
+            time= 3,
             num_guests=3,
             notes="Notes"
         )
 
     def test_booking_str_representation(self):
-        # Test the string representation of the booking
+        #Test the string representation of the booking
         expected_str = " Covers: 3 Date: 2023-11-12"
-
+        
         self.assertEqual(str(self.booking), expected_str)
 
     def test_booking_fields(self):
-        # Test booking fields
+        #Test booking fields
         self.assertEqual(self.booking.customer, self.user)
         self.assertEqual(self.booking.table, self.table)
         self.assertEqual(self.booking.date, date(2023, 11, 12))
@@ -73,44 +59,36 @@ class BookingTest(TestCase):
         self.assertEqual(self.booking.notes, "Notes")
 
     def test_booking_time_display(self):
-        # Tests integer in tuple for corresponding time
+        #tests integer in tuple for corresponding time
         expected_display = "11:00"
         booking = Booking.objects.get(pk=self.booking.pk)
         self.assertEqual(booking.get_time_display(), expected_display)
 
 
-# views.py
+#views.py
 
 class ViewTests(TestCase):
-    def setUp(self):
-        # Creates a user for testing
-        self.user = User.objects.create(
-            username="testuser",
-            password="testpassword"
-            )
+    def setUp(self):    
+        #Creates a user for testing
+        self.user = User.objects.create(username="testuser", password="testpassword")
+        self.table = Table.objects.create(table_number=1, capacity=4, is_available=True)
 
-        self.table = Table.objects.create(
-            table_number=1,
-            capacity=4,
-            is_available=True
-            )
-
-        # Set up a factory request to create a simulated request
+        #Set up a factory request to create a simulated request
         self.factory = RequestFactory()
 
     def test_booking_create_view(self):
-        # Create request
+        #Create request
         request = self.factory.post(reverse('booking_add'))
 
-        # Sets user on request if logged in
+        # #Sets user on request if logged in
         request.user = self.user
 
-        # Create form instance
-        form = BookingForm(data={
+        # #Create form instance
+        form=BookingForm(data={
             'num_guests': 4,
-            'date': '2023-11-12',
-            'time': 3,
-            'notes': "Notes"
+            'date' : '2023-11-12',
+            'time' : 3,
+            'notes' : "Notes"
         })
 
         # #Check form valid
@@ -123,14 +101,14 @@ class ViewTests(TestCase):
         view = BookingCreateView.as_view()
         response = view(request)
 
-        # Check if response good
+         #check if response good
         self.assertEqual(response.status_code, 200)
 
     def test_my_bookings_view(self):
-        # Create request
+        #Create request
         request = self.factory.post(reverse('my_bookings'))
 
-        # Sets user on request if logged in
+        # #Sets user on request if logged in
         request.user = self.user
 
         # Creates view and call dispatch
@@ -144,22 +122,17 @@ class ViewTests(TestCase):
         self.assertTemplateUsed(response, 'my_bookings.html')
 
     def test_booking_edit_view(self):
-        # create booking
+        #create booking
         booking = Booking.objects.create(
             customer=self.user,
             table=self.table,
             date=date(2023, 11, 12),
-            time=3,
+            time= 3,
             num_guests=3,
             notes="Notes"
         )
         # Create request
-        request = self.factory.get(
-            reverse(
-                'booking_edit',
-                kwargs={'pk': booking.pk}
-                )
-            )
+        request = self.factory.get(reverse('booking_edit', kwargs={'pk': booking.pk}))
 
         # Sets user on request if logged in
         request.user = self.user
@@ -170,24 +143,18 @@ class ViewTests(TestCase):
 
         # Check if response status code is 200 (OK)
         self.assertEqual(response.status_code, 200)
-
     def test_delete_booking_view(self):
-        # create booking
+        #create booking
         booking = Booking.objects.create(
             customer=self.user,
             table=self.table,
             date=date(2023, 11, 12),
-            time=3,
+            time= 3,
             num_guests=3,
             notes="Notes"
         )
         # Create request
-        request = self.factory.get(
-            reverse(
-                'booking_defensive',
-                kwargs={'pk': booking.pk}
-                )
-            )
+        request = self.factory.get(reverse('booking_defensive', kwargs={'pk': booking.pk}))
 
         # Sets user on request if logged in
         request.user = self.user

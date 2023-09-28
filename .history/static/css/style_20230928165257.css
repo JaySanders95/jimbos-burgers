@@ -20,15 +20,14 @@ body {
 
 .nav-link:hover,
 .nav-link:active {
+    color: none !important;
     text-decoration: underline;
 }
+ My CSS */
+
 
 th {
     padding-right: 15px;
-}
-
-.toppage {
-    padding-top: 120px;
 }
 
 .hero-image {
