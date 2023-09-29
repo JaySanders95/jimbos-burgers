@@ -67,7 +67,6 @@ th {
 }
 
 @media screen and (max-width: 400px) {
-    .toppage {
-        padding-top: 150px;
+    #score-section nav {
+        font-size: 12px;
     }
-}

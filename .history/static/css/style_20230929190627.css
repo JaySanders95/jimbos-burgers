@@ -67,7 +67,7 @@ th {
 }
 
 @media screen and (max-width: 400px) {
-    .toppage {
-        padding-top: 150px;
+    .form-background {
+        font-size: 12px;
     }
 }
