@@ -1,1 +1,0 @@
-const images = ['burger-hero','','']
