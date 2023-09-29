@@ -4,7 +4,7 @@ This application is a restaurant booking system for Jimbo's Burgers.
 A fictional burger joint, using my own name, burger names and the location of Everton FC as my address.
 Customers can register using an Username and password, and may then reserve a table for a number of people, on a date in the future at a certain time.
 
-[Website - Jimbo's Burgers]()
+[Website - Jimbo's Burgers](https://jimbos-burgers-1bc3648c20fd.herokuapp.com/)
 
 ![](static/readme_images/'filename'.png) - AM I RESPONSIVE
 
@@ -42,8 +42,6 @@ Customers can register using an Username and password, and may then reserve a ta
     Project planning was done with Agile methodologies.
 
 [Agile project](https://github.com/users/JaySanders95/projects/1/views/1)
-
-![](static/readme_images/'filename'.png)
 
 ## Wireframes
 --- 
@@ -228,9 +226,8 @@ if a user isnt logged in, they are redirected to the login page to continue.
     - Connect to GitHub, sign in and connect to the required repository.
     - Scroll down to manual Deploy, select the main branch, and click deploy.
 
-    The app will be deployed soon
 
-    [Website]()
+    [Website](https://jimbos-burgers-1bc3648c20fd.herokuapp.com/)
 
 
 ## Tests
@@ -300,9 +297,9 @@ the correct template was given for all views
 During testing, i had to comment out the "messages" because middleware was not allowing this code to be checked so the tests were run without these.
 messages were showing correctly when they were supposed to.
 
-Manual testing:
+## Manual testing:
 
-User authentication:
+# User authentication:
 
 During manual tests, i tried:
 
@@ -396,6 +393,7 @@ I then tried to book a table and not fill out required fields:
 Time was required - could not confirm booking without this field completed
 Date was required - could not confirm booking without this field completed
 Number of guests was required - could not confirm booking without this field completed
+Notes - Special characters were permitted, as they could be used in a sentence for notes (i.e "do you do 20% for Forces discount?")
 
 Listed Bookings-TESTING:
 When booking list was empty:
@@ -533,6 +531,7 @@ The CI tutors who helped with bugs/queries that i had faced, these include:
 - Not being able to test correctly, and issues in code preventing this
 - Problems with why bookings would not submit to database
 - How to extend base.html to django-allauth pages
+- Help with deploying my project to Heroku
 
 I think therefore i blog for specific code and setup for project
 
@@ -547,8 +546,4 @@ They helped with issues but did not provide large scale code for me to copy, suc
 - Filepathing issues
 - Converting tuple integer to human readable value
 - Ideas on how to tackle upcoming issues
-
-
-
-
 
