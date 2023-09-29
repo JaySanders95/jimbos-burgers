@@ -6,7 +6,7 @@ Customers can register using an Username and password, and may then reserve a ta
 
 [Website - Jimbo's Burgers](https://jimbos-burgers-1bc3648c20fd.herokuapp.com/)
 
-![](static/readme_images/'filename'.png) - AM I RESPONSIVE
+![](static/readme_images/am-i-responsive.png) - AM I RESPONSIVE
 
 ## Contents
 - [Goals]
