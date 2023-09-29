@@ -26,14 +26,14 @@ def menu(request):
             'price': "£11.99"
         },
         {
-            'burger_name': "The Crazy Colonel",
+            'burger_name': "The Joker's Pistol",
             'description': "A Grilled chicken breast, maple-glazed bacon,"
             " monterey jack cheese and lettuce,"
             " smothered in our house BBQ sauce.",
             'price': "£14.99"
         },
         {
-            'burger_name': "The Joker's Pistol",
+            'burger_name': "",
             'description': "2 6oz Angus beef patties, maple-glazed bacon,"
             " monterey cheese, all the greens and "
             "a joker smile dashing of tomato sauce.",

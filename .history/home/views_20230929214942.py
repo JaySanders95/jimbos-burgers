@@ -26,7 +26,7 @@ def menu(request):
             'price': "£11.99"
         },
         {
-            'burger_name': "The Crazy Colonel",
+            'burger_name': "",
             'description': "A Grilled chicken breast, maple-glazed bacon,"
             " monterey jack cheese and lettuce,"
             " smothered in our house BBQ sauce.",
